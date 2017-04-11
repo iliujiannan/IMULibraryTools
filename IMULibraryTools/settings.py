@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import pymysql
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -78,10 +79,11 @@ WSGI_APPLICATION = 'IMULibraryTools.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'imu_library_tools',
+        'NAME': 'imu_library_tool',
         'USER': 'root',
         'PASSWORD': '',
-        'PORT': 3306
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 
