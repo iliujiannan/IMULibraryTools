@@ -28,7 +28,7 @@ class GetStudentPosition():
         param = param.replace("{{fr_end}}", str(end_time))
         url = url + param
         response, conetent = http.request(uri=url, method='GET')
-        print(conetent.decode('utf-8'))
+        # print(conetent.decode('utf-8'))
         return conetent.decode('utf-8')
     def get_seat_info_list(self, date, start_time, end_time):
 
@@ -61,7 +61,6 @@ class GetStudentPosition():
         temp_list = self.analyze_result(self.send_request("100485899", date, start_time, end_time))
 
         list.extend(temp_list)
-
         return list
     def analyze_result(self, content):
         content = json.loads(content)
@@ -211,26 +210,26 @@ def call_get_seat_infor_list(date, start_time, end_time):
             'msg': 'ok',
             'data': data_list
         }
-        return json.dumps(result)
+        return result
     except Exception as e:
         result = {
             'statues': 0,
             'msg': '服务异常',
-            'data': None
+            'data': []
         }
-        return json.dumps(result)
+        return result
 def subscribe(zjh, pwd, dev_id, start_time, end_time):
     try:
         s = Subscribe(zjh, pwd)
         result = s.subscribe(dev_id, start_time, end_time)
-        return json.dumps(result)
+        return result
     except Exception as e:
         result = {
             'statues': 0,
             'msg': '服务异常',
             'data': None
         }
-        return json.dumps(result)
+        return result
 
 
 

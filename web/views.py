@@ -20,14 +20,13 @@ def login(request):
             'msg': '登录服务异常',
             'statues': 0
         }
-    finally:
-       return HttpResponse(json.dumps(result, content_type="application/json"))
+    return HttpResponse(json.dumps(result), content_type="application/json")
 
 @csrf_exempt
 def search(request):
     result = {}
     try:
-        student_id = request.GET.get('student_id')
+        student_id = int(request.GET.get('student_id'))
         secret_key = request.GET.get('secret_key')
         name = request.GET.get('name')
         date = request.GET.get('date')
@@ -41,12 +40,10 @@ def search(request):
             'msg': '查询服务异常',
             'statues': 0
         }
-    finally:
-        return HttpResponse(json.dumps(result, content_type="application/json"))
+    return HttpResponse(json.dumps(result), content_type="application/json")
 
 @csrf_exempt
 def subscribe(request):
-    result = {}
     try:
         student_id = request.POST.get('student_id')
         secret_key = request.POST.get('secret_key')
@@ -61,9 +58,7 @@ def subscribe(request):
             'msg': '预约服务异常',
             'statues': 0
         }
-    finally:
-       return HttpResponse(json.dumps(result, content_type="application/json"))
-
+    return HttpResponse(json.dumps(result), content_type="application/json")
 
 
 
