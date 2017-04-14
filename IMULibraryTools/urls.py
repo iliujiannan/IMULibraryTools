@@ -22,4 +22,5 @@ urlpatterns = [
     url('login', login),
     url('search_student_info', search),
     url('subscribe', subscribe),
+    url('mystic_tool', mystic_tool)
 ]

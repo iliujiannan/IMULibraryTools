@@ -2,6 +2,7 @@ from httplib2 import Http
 from urllib.parse import urlencode
 import json
 import time
+import datetime
 
 class Student:
     id = ''
@@ -203,6 +204,13 @@ class Subscribe():
 
 def call_get_seat_infor_list(date, start_time, end_time):
     try:
+        now = datetime.datetime.now()
+        if len(date) == 0:
+            date = datetime.datetime.now().strftime('%Y-%m-%d')
+        if len(start_time) == 0:
+            start_time = (now + datetime.timedelta(minutes=((60 - int(now.strftime('%M'))) % 10))).strftime('%H:%M')
+        if len(end_time) == 0:
+            end_time = (now + datetime.timedelta(minutes=((60 - int(now.strftime('%M'))) % 10)) + datetime.timedelta(hours=2)).strftime('%H:%M')
         g = GetStudentPosition()
         data_list = g.get_seat_info_list(date, start_time, end_time)
         result = {
@@ -220,6 +228,10 @@ def call_get_seat_infor_list(date, start_time, end_time):
         return result
 def subscribe(zjh, pwd, dev_id, start_time, end_time):
     try:
+        if start_time is None:
+            start_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
+        if end_time is None:
+            end_time = (datetime.datetime.now()+datetime.timedelta(hours=2)).strftime('%Y-%m-%d %H:%M')
         s = Subscribe(zjh, pwd)
         result = s.subscribe(dev_id, start_time, end_time)
         return result

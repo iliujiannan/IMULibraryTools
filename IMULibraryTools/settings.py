@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'e_-5(=kx&b2(+(t@=1wtahndq7t&%wr+=^p^ugz8unek#cx70a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'IMULibraryTools.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'imu_library_tool',
+        'NAME': 'imu_library_tools',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
