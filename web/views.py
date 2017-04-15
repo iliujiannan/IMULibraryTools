@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from web.controller.service import *
 import json
+from web.bean.run_mystic_tool import *
 # Create your views here.
 
 
@@ -64,15 +65,15 @@ def mystic_tool(request):
         num = request.POST.get('num')
         secret_key = request.POST.get('secret_key')
         name = request.POST.get('name')
-        email = request.POST.get('email')
+        email = request.POST.get('mail')
         start_time = request.POST.get('start_time')
         end_time = request.POST.get('end_time')
         result = do_mystic_tool(num, secret_key, name, start_time, end_time,email)
     except Exception as e:
-        print('subscribe_error')
+        print('mystic_tool_error')
         print(e)
         result = {
-            'msg': '预约服务异常',
+            'msg': '特殊工具异常',
             'statues': 0
         }
     return HttpResponse(json.dumps(result), content_type="application/json")

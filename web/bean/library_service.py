@@ -80,8 +80,8 @@ class GetStudentPosition():
             student.seat = element.get('labName') + " " + element.get('title')
             student.dev_id = element.get('devId')
             student.dev_name = element.get('devName')
-            student.open_start = element.get('openStart')
-            student.open_end = element.get('openEnd')
+            student.open_start = element.get('ts')[0].get('start')
+            student.open_end = element.get('ts')[0].get('end')
             students.append(student)
         return students
 

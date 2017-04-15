@@ -156,9 +156,13 @@ def do_mystic_tool(num, secret_key, name, start_time, end_time, mail):
         m.end_time = end_time
         m.mail = mail
         m.save()
+        result = {
+            'statues': 1,
+            'msg': 'OK'
+        }
     else:
         result = {
             'statues': 0,
             'msg': '请登录'
         }
-        return result
+    return result
