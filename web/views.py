@@ -83,8 +83,9 @@ def achieve_empty_room(request):
     try:
         zc = str(request.GET.get("zc"))
         xq = str(request.GET.get("xq"))
+        jc = str(request.GET.get("jc"))
         j = jwxt()
-        data_list = j.executeGetEmptyRoomList(zc, xq)
+        data_list = j.executeGetEmptyRoomList(zc, xq, jc)
         result = {
             'msg': 'OK',
             'statues': 1,
