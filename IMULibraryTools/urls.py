@@ -22,5 +22,6 @@ urlpatterns = [
     url('login', login),
     url('search_student_info', search),
     url('subscribe', subscribe),
-    url('mystic_tool', mystic_tool)
+    url('mystic_tool', mystic_tool),
+    url('achieve_empty_room', achieve_empty_room)
 ]

@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from web.controller.service import *
-import json
 from web.bean.run_mystic_tool import *
+from web.bean.JWTest import *
 # Create your views here.
 
 
@@ -78,6 +78,26 @@ def mystic_tool(request):
         }
     return HttpResponse(json.dumps(result), content_type="application/json")
 
+@csrf_exempt
+def achieve_empty_room(request):
+    try:
+        zc = str(request.GET.get("zc"))
+        xq = str(request.GET.get("xq"))
+        j = jwxt()
+        data_list = j.executeGetEmptyRoomList(zc, xq)
+        result = {
+            'msg': 'OK',
+            'statues': 1,
+            'data_list':data_list
+        }
+    except Exception as e:
+        print('achieve_empty_room_error')
+        print(e)
+        result = {
+            'msg': '空教室查询异常',
+            'statues': 0
+        }
+    return HttpResponse(json.dumps(result), content_type="application/json")
 
 
 
