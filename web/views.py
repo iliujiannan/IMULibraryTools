@@ -86,11 +86,17 @@ def achieve_empty_room(request):
         jc = str(request.GET.get("jc"))
         j = jwxt()
         data_list = j.executeGetEmptyRoomList(zc, xq, jc)
-        result = {
-            'msg': 'OK',
-            'statues': 1,
-            'data_list':data_list
-        }
+        if len(data_list)>0:
+            result = {
+                'msg': 'OK',
+                'statues': 1,
+                'data_list':data_list
+            }
+        else:
+            result = {
+                'msg': '没有空教室',
+                'statues': 0
+            }
     except Exception as e:
         print('achieve_empty_room_error')
         print(e)
