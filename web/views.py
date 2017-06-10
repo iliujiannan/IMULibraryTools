@@ -85,17 +85,21 @@ def achieve_empty_room(request):
         xq = str(request.GET.get("xq"))
         jc = str(request.GET.get("jc"))
         j = jwxt()
-        data_list = j.executeGetEmptyRoomList(zc, xq, jc)
-        if len(data_list)>0:
+        data_list1 = j.executeGetEmptyRoomList('002', zc, xq, jc)
+        #data_list = [{"jxl": "综合楼", "js": "208", "jslx": "多媒体"}]
+        data_list2 = j.executeGetEmptyRoomList('003', zc, xq, jc)
+        data_list = data_list1.extend(data_list2)
+        if len(data_list1) > 0:
             result = {
                 'msg': 'OK',
                 'statues': 1,
-                'data_list':data_list
+                'data_list': data_list
             }
+            print(len(data_list))
         else:
             result = {
                 'msg': '没有空教室',
-                'statues': 0
+                'statues': 0,
             }
     except Exception as e:
         print('achieve_empty_room_error')

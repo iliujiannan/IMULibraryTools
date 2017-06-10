@@ -8,7 +8,7 @@ class jwxt():
         self.oper = "ld"
         self.zxxnxq = "2016-2017-2-2"#3-2,2017-2018-1-2
         self.zxXaq = "01"
-        self.zxJxl = "002" #003
+        self.zxJxl = "" #003
         self.zxZc = ""
         self.zxJc = ""
         self.zxxq = ""
@@ -54,10 +54,11 @@ class jwxt():
         except Exception as e:
             print(e)
             return '登录失败'
-    def executeGetEmptyRoomList(self, zc, xq, jc):
+    def executeGetEmptyRoomList(self, zxJxl, zc, xq, jc):
         self.zxZc = zc
         self.xq = xq
         self.zxJc = jc
+        self.zxJxl = zxJxl
         cookie = self.getCookies()
         data = "?oper=" + self.oper + "&zxxnxq=" + self.zxxnxq + "&zxXaq=" + self.zxXaq + "&zxJxl=" + self.zxJxl + "&zxZc=" + self.zxZc + "&zxJc=" + self.zxJc + \
                "&zxxq=" + self.zxxq
